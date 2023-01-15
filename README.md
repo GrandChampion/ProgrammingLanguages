@@ -2,6 +2,7 @@
 
 ## Python
 ### 1. If statement
+#### 1.1 If/else if/else statement
 ```python
 if x < 0 and y == True:
     x = 0
@@ -13,6 +14,11 @@ elif x == 0 or y == False:
     x = 0
 else:
     x = 1
+```
+#### 1.2 Ternary
+```Python
+theNumber = 3
+text = 'It is positive' if (theNumber > 0) else 'It is negative'
 ```
 ```
 Comparison operator: ==, !=, >, <, >=, <= 
@@ -281,6 +287,7 @@ let Mark = new Human("Mark Zuckerberg", 38);
 ---
 ## Java
 ### 1. If statement
+#### 1.1 If/else if/else statement
 ```Java
 if (x > 0 && y == true) {
     System.out.println("Positive");
@@ -289,6 +296,12 @@ if (x > 0 && y == true) {
 } else {
     System.out.println("Negative");
 }
+```
+#### 1.2 Ternary
+```Java
+int number = 3;
+boolean isPositive = false;
+isPositive = (number > 0) ? true : false;
 ```
 ```
 Comparison operator: ==, !=, >, <, >=, <=
