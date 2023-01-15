@@ -121,6 +121,12 @@ object1.function1(1)
   rgb = {'red': 1, 'green': 1, 'blue': 255}
   rgb['red']
   ```
+- Set (unordered collection with no duplicate elements)
+  ```python
+  RGB = {'Red', 'Green', 'Blue', 'Blue'}
+  print(RGB)
+  # Print {'Red', 'Green', 'Blue'}
+  ```
 - Boolean
   ```python
   True
