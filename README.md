@@ -14,9 +14,15 @@ elif x == 0 or y == False:
 else:
     x = 1
 ```
-```python3
+```
 Comparison operator: ==, !=, >, <, >=, <= 
 ```
+Logical operator
+|Logic|Python|
+|---|---|
+|And|and|
+|Or|or|
+|Not|not|
 ---
 ### 2. For statement
 #### 2.1 For Loop
@@ -132,6 +138,15 @@ if (x < 0) {
 ```TypeScript
 x > 0 ? console.log('Positive') : console.log('Negative');
 ```
+```
+Comparison operator: ==, ===, !=, !==, >, <, >=, <=
+```
+Logical operator
+|Logic|TypeScript|
+|---|---|
+|And|&&|
+|Or|\|\||
+|Not|!|
 ---
 ### 2. For statement
 #### 2.1 For Loop
@@ -202,7 +217,7 @@ console.log(addition(1, 2));
 ---
 ## 5. Class
 ```TypeScript
-class theClass {
+class Human {
     private name: string;
     private age: number;
 
@@ -215,16 +230,16 @@ class theClass {
     }
 }
 
-let James = new theClass("James", 27);
+let Mark = new Human("Mark Zuckerberg", 38);
 ```
 ---
 ## 6. Data type
-- Boolean
+- boolean
   ```TypeScript 
   let isFinished: boolean = true;
   isFinished = false;
   ```
-- Number
+- number
   ```TypeScript
   let decimal: number = 6;
   ```
@@ -234,10 +249,14 @@ let James = new theClass("James", 27);
   color = 'red';
   ```
 - list
-  ```TypeScript
-  let list: number[] = [1, 2, 3]; //regular list
-  let stringList: Array<string> = ["one", "two", "three"]; //Generic list
-  ```
+  - Regular list
+    ```TypeScript
+    let list: number[] = [1, 2, 3];
+    ```
+  - Generic list
+    ```TypeScript
+    let stringList: Array<string> = ["one", "two", "three"];
+    ```
 - enum
   ```TypeScript
   enum RGB {
@@ -259,3 +278,136 @@ let James = new theClass("James", 27);
   ```TypeScript
   let data: any = 4;
   ```
+---
+## Java
+### 1. If statement
+```Java
+if (x > 0 && y == true) {
+    System.out.println("Positive");
+} else if (x == 0 || y != false) {
+    System.out.println("Zero");
+} else {
+    System.out.println("Negative");
+}
+```
+```
+Comparison operator: ==, !=, >, <, >=, <=
+```
+Logical operator
+|Logic|TypeScript|
+|---|---|
+|And|&&|
+|Or|\|\||
+|Not|!|
+---
+### 2. For statement
+#### 2.1 For Loop
+```Java
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+// Print: 0, 1, 2, 3, 4
+```
+#### 2.2 For-Each Loop
+```Java
+int[] numbers = { 0, 0, 1, 2, 3 };
+for (int i : numbers) { // i's data type should be the same as elements in the list
+    System.out.println(numbers[i]);
+}
+// Print: 0, 0, 0, 1, 2
+```
+---
+### 3. While statement
+#### 3.1 While Loop
+```Java
+int cnt = 0;
+while (cnt < 5) {
+    System.out.println(cnt);
+    cnt++;
+}
+// 0, 1, 2, 3, 4
+```
+#### 3.2 Do-while loop
+```Java
+int cnt = 0;
+do {
+    System.out.println(cnt);
+    cnt++;
+} while (cnt < 5);
+// 0, 1, 2, 3, 4
+```
+---
+### 4. Function
+```Java
+public String message(int a) {
+    return "" + a;
+}
+```
+---
+### 5. Class
+Class declaration
+```Java
+public class Person {
+    // field
+    public String nationality;
+
+    // constructor
+    public Person(String countryOfBirth) {
+        this.nationality = countryOfBirth;
+    }
+
+    // methods
+    public void immigration(String country) {
+        this.nationality = country;
+    }
+}
+```
+Object declaration
+```Java
+Person asian = new Person("Japan");
+```
+---
+### 6. Data type
+- int
+  ```Java
+  int number = 5;
+  ```
+- float
+  ```Java
+  float floatingNumber = 3.14f;
+  ```
+- char
+  ```Java
+  char alphabet = 'a';
+  ```
+- boolean
+  ```Java
+  boolean isFinished = true;
+  ```
+- String
+  ```Java
+  String text = "This is Java.";
+  ```
+- Array
+  ```Java
+  String[] course = { "cpsc 210", "cpsc 213", "cpsc 221", "stat 302" };
+  ```
+- ArrayList
+
+  - Initialization        
+    ```Java
+    ArrayList<String> rgb = new ArrayList<String>();
+    ```        
+  - Adding element
+    ```Java
+    rgb.add("Red");
+    rgb.add("Green");
+    rgb.add("Blue");
+    ```
+  - Getting element
+    ```Java
+    rgb.get(0);
+    rgb.get(1);
+    rgb.get(2);
+    // Red, Green, Blue
+    ```
