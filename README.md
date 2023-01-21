@@ -161,6 +161,7 @@ object1.function1(1)
   ```
 - 7) Tuple
   - Tuple is immutable
+  ```python
   water = ('H', '2', 'O')
   ```
 - 8) Heap
