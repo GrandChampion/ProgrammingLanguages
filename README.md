@@ -164,7 +164,7 @@ object1.function1(1)
   water = ('H', '2', 'O')
   ```
 - 8) Heap
-  Heap mutable
+  - Heap is mutable
   ```python
   import heapq
 
