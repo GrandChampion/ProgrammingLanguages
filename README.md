@@ -119,6 +119,7 @@ object1.function1(1)
   alphabet[0]
   alphabet.insert(2,'g') # insert 'g' to index 2
 - 2) Stack
+  - Stack is mutable
   ```python
   stack1 = []
   stack1.append(3)  # push 3
