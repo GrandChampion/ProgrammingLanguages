@@ -152,7 +152,6 @@ object1.function1(1)
   ```
 - 6) Hash Map (Dictionary)
   - Hash Map is mutable
-  -
   ```python 
   # (Hash) Map
   rgb = {'red': 1, 'green': 1, 'blue': 255}
