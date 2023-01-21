@@ -106,31 +106,78 @@ object1.function1(1)
   text = 'This is the sentence.'
   text[0]
   ```
-- Sequence
+- Boolean
+  ```python
+  True
+  False
+  ```
+- 1) List
+  - List is mutable
   ```python
   # list
   alphabet = ['a', 'b', 'c']
   alphabet[0]
-
-  # tuple
-  water = ('H', '2', 'O')
+  alphabet.insert(2,'g') # insert 'g' to index 2
+- 2) Stack
+  ```python
+  stack1 = []
+  stack1.append(3)  # push 3
+  stack1.append(5)  # push 5
+  stack1.pop() # pop 5
   ```
-- Mapping
-  ```python 
-  # dict
-  rgb = {'red': 1, 'green': 1, 'blue': 255}
-  rgb['red']
+- 3) 2D List
+  - 2D List is mutable
+  ```python
+  twoDArray = [[1, 0, 0, 0],
+               [0, 1, 0, 0],
+               [0, 0, 1, 0],
+               [0, 0, 0, 1]]
   ```
-- Set (unordered collection with no duplicate elements)
+- 4) Queue
+  - Queue is mutable
+  ```python
+  queue1 = deque()
+  queue1.append(3)
+  queue1.append(5)
+  print(queue1)
+  queue1.popleft()
+  print(queue1)
+  ```
+- 5) Set (unordered collection with no duplicate elements)
+  - Set is mutable
   ```python
   RGB = {'Red', 'Green', 'Blue', 'Blue'}
   print(RGB)
   # Print {'Red', 'Green', 'Blue'}
   ```
-- Boolean
+- 6) Hash Map (Dictionary)
+  - Hash Map is mutable
+  -
+  ```python 
+  # (Hash) Map
+  rgb = {'red': 1, 'green': 1, 'blue': 255}
+  rgb['brown'] = 30
+  rgb['green']
+  ```
+- 7) Tuple
+  - Tuple is immutable
+  # tuple
+  water = ('H', '2', 'O')
+  ```
+- 8) Heap
+  Heap mutable
   ```python
-  True
-  False
+  import heapq
+
+  theMinHeap = []
+  heapq.heappush(theMinHeap, 5)
+  heapq.heappush(theMinHeap, 4)
+  heapq.heappush(theMinHeap, 6)
+  heapq.heappush(theMinHeap, 7)
+  heapq.heappush(theMinHeap, 1)
+  heapq.heappush(theMinHeap, 2)
+  print(theMinHeap[2])
+  heapq.heappop(theMinHeap)
   ```
 ---
 
