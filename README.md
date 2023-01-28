@@ -360,6 +360,29 @@ let Mark = new Human("Mark Zuckerberg", 38);
   let data: any = 4;
   ```
 ---
+## JavaScript
+### 1. If statement
+
+
+---
+
+
+### 2. For loop
+
+---
+
+
+### 3. While loop
+---
+
+### 4. Function
+---
+
+### 5. Class
+---
+
+### 6. Data type
+---
 ## Java
 ### 1. If statement
 #### 1.1 If/else if/else statement
