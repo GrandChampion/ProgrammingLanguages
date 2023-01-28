@@ -618,10 +618,10 @@ std::cout << theObject1.getWidth() << std::endl;
 - bool
 - void
 - Array
-```c++
-int x[5] = {1, 2, 3, 4, 5};
-std::cout << x[0] << std::endl;
-```
+  ```c++
+  int x[5] = {1, 2, 3, 4, 5};
+  std::cout << x[0] << std::endl;
+  ```
 - vector \<data type>
   - should put standard library version at the args of tasks.json file
     ```json
