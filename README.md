@@ -505,8 +505,23 @@ console.log(Point2D.dimension);
 Point2D.numberOfAxis()
 ```
 ---
-
 ### 6. Data type
+- Null
+- undefined
+- Boolean
+- Number
+- BigInt
+- String
+- Symbol
+- Array
+```javascript
+let fruits = ["apple", "banana"];
+fruits.push("orange");
+fruits[3] = "watermelon"
+```
+```javascript
+let courses = new Array("Math", "CPSC", "Stat");
+```
 ---
 ## Java
 ### 1. If statement
