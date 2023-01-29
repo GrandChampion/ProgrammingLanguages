@@ -1,1 +1,0 @@
-let courses = new Array("Math", "CPSC", "Stat");
