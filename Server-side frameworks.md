@@ -4,8 +4,9 @@
 - Suitable for making blog like website (e.g instagram)
 - Good for making shopping or real estate website
 - Fastest to make backend application
-- Best for CRUD
+- Best for CRUD (Create, Read, Update, and Delete) notice board like facebook
 - Has the most libraries
+- Faster than any other backend framework while using library, because libraries are implemented with C++
 - Has the biggest community, so developer can easily get help
 - Has good security
 - Good at handling image and short video (1 minute)
