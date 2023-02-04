@@ -318,3 +318,76 @@ fruits[3] = "watermelon"
 let courses = new Array("Math", "CPSC", "Stat");
 ```
 ---
+# Promise
+- Object that holds final result of an asynchronous operation
+## Purpose
+- Make code easy to catch error
+- It is like try/catch block for JavaScript
+
+## State
+### 1. Pending
+- inital state
+### 2. Settled
+- Fulfilled
+  - operation from Pending was completed successfully
+  - execute .then(call back function(data))
+  - use return value from Pending function as call back function's argument
+- Rejected
+  - operation from Pending failed
+  - execute .catch(call back function(error))
+  - use error from Pending function as call back function's argument
+
+```JavaScript
+ErrorCondition = false;
+const promiseObject = new Promise((function (fulfilledFunction, rejectedFunction) {
+    if (ErrorCondition == true) {
+        rejectedFunction("Error message"); //Argument is the return value when it is failed
+    } else {
+        fulfilledFunction("Successful message"); // Argument is the return value when promise object's function succeed
+    }
+}))
+
+promiseObject
+    // When Promise object ran successfully
+    .then(function (result) {
+        console.log(result);
+    })
+    // When Promise object returned error
+    .catch(function (error1) {
+        console.log(error1);
+    })
+```
+---
+# Async Await
+## Purpose
+
+## async
+- make the function to return Promise
+
+## await
+- make the function to wait for Promise
+- await is used only inside **async** function
+- makes the function to pause and wait for a fulfilled promise
+
+```JavaScript
+function promiseReturnFunction1() {
+    let promiseObject = new Promise(function (f1, f2) {
+        f1(); //when fulfilled
+        f2(); //when rejected
+    });
+    return promiseObject;
+}
+
+function promiseReturnFunction2(parameter1) {
+
+}
+
+async function promiseFactory() {
+    let x = await someFunction()
+    let y = await anotherFunction(x)
+    let z = await otherFunction(y)
+    await lastFunction()
+    return 
+}
+````
+---
