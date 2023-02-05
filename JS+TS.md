@@ -319,75 +319,180 @@ let courses = new Array("Math", "CPSC", "Stat");
 ```
 ---
 # Promise
-- Object that holds final result of an asynchronous operation
-## Purpose
-- Make code easy to catch error
-- It is like try/catch block for JavaScript
+## 1. Purpose
+- **JavaScript is single threaded**, so in order to mimic the effect of multithread, JavaScript puts Asynchronous function to Web API space, which is like the **second thread**
+![Asynchronous structure](/src/Asynchronous%20structure.png)
+- Syntax is similar to try/catch block
 
-## State
-### 1. Pending
-- inital state
-### 2. Settled
-- Fulfilled
-  - operation from Pending was completed successfully
-  - execute .then(call back function(data))
-  - use return value from Pending function as call back function's argument
-- Rejected
-  - operation from Pending failed
-  - execute .catch(call back function(error))
-  - use error from Pending function as call back function's argument
+## 2. Structure
+### 2.1 Promise object
+![Promise states](./src/Promise%20states.png)
 
-```JavaScript
-ErrorCondition = false;
-const promiseObject = new Promise((function (fulfilledFunction, rejectedFunction) {
-    if (ErrorCondition == true) {
-        rejectedFunction("Error message"); //Argument is the return value when it is failed
+### 2.2 Producer's code
+- prom is a Promise object
+```javascript
+// f1 and f2 are parameter of the function in this case
+httpResponseCode = 200
+const prom = new Promise(function (f1, f2) {
+    // f1: function that is executed when asynchronous function is successful (fulfilled)
+    // f2: function that is executed when asynchronous function is unsuccessful (rejected)
+    if (httpResponseCode > 400) {
+        f2("Error") // String "Error" is returned
     } else {
-        fulfilledFunction("Successful message"); // Argument is the return value when promise object's function succeed
+        f1("OK") // String "OK" is returned
     }
-}))
+})
+```
+- Producer code decides the promise object's state to be successful or unsuccessful using condition statement
+- Promise constructor takes **1 argument**, which is a function
+- This argument function decides **what will be returned when the promise instance will be successful or unsuccessful** based on condition statement of Producer code
 
-promiseObject
-    // When Promise object ran successfully
-    .then(function (result) {
-        console.log(result);
+### 2.3 Consumer's code
+#### 2.3.1 then function
+```javascript
+// then function that takes 2 arguments, which are functions
+prom.then(function (result) { console.log(result) }, function (error) { console.log(error) })
+```
+- then function takes **1 or 2 parameters**, which are both functions
+- If promise object's state is 'fulfilled', then execute the 1st argument function
+- If promise object's state is 'rejected', then execute the 2nd argument function
+- then function can handle **both 'fulfilled' state and 'rejected' state**
+#### 2.3.2 catch function
+```javascript
+prom.catch(function (error) {console.log(error)})
+```
+- catch function takes **only 1 parameter**, which is a function
+- catch function can only handle **'rejected' state**
+#### 2.3.3 finally function
+- finally function is always executed regardless of the state of promise object
+- finally function takes **only 1 parameter**, which is a function
+- finally function's argument function don't take any parameter
+
+#### 2.3.4 Combining then and catch function
+![then+catch](src/then%2Bcatch.png)
+- When we combine then and catch function, we can separate cases for 'fulfilled' and 'rejected' like if statement
+
+### 3. Callback style vs Promise style
+#### **3.1 Callback style**
+- Passing callback function as argument to next function
+```javascript
+function Canada(f1) {
+    setTimeout(function () {
+        console.log("I am in Canada")
+        f1()
+    }, 1000)
+}
+
+function Vancouver(f1) {
+    setTimeout(function () {
+        console.log("   I am in Vancouver")
+        f1()
+    }, 1000)
+}
+
+function UBC(f1) {
+    setTimeout(function () {
+        console.log("           I am in UBC")
+        f1()
+    }, 1000)
+}
+
+Canada(function () { Vancouver(function () { UBC(function () { console.log("Finish") }) }) })
+```
+#### **3.2 Promise style**
+- Passing fulfilled message to the next then function
+- In this case, functions return Promise object
+```javascript
+function Canada() {
+    return new Promise(function (f1, f2) {
+        setTimeout(function () { f1("I am in Canada") }, 1000)
     })
-    // When Promise object returned error
-    .catch(function (error1) {
-        console.log(error1);
+}
+
+function Vancouver(message) {
+    console.log(message)
+    return new Promise(function (f1, f2) {
+        setTimeout(function () { f1("   I am in Vancouver") }, 1000)
     })
+}
+
+function UBC(message) {
+    console.log(message)
+    return new Promise(function (f1, f2) {
+        setTimeout(function () { f1("       I am in UBC") }, 1000)
+    })
+}
+
+Canada() // Canada pass "I am in Canada" to the next then function
+    .then(function (data) { return Vancouver(data) }) // Vancouver pass "    I am in Vancouver" to the next then function
+    .then(function (data) { return UBC(data) }) // UBC pass "       I am in UBC" to the next then function
+    .then(function (data) { return console.log(data) })
+    .finally(function () { console.log("Finished") })
 ```
 ---
-# Async Await
-## Purpose
+# Async+Await
+## 1. Purpose
+- We can use Web API space with simple syntax than Promise syntax 
 
-## async
-- make the function to return Promise
-
-## await
-- make the function to wait for Promise
-- await is used only inside **async** function
-- makes the function to pause and wait for a fulfilled promise
-
-```JavaScript
-function promiseReturnFunction1() {
-    let promiseObject = new Promise(function (f1, f2) {
-        f1(); //when fulfilled
-        f2(); //when rejected
-    });
-    return promiseObject;
+## 2. Async function
+- Async function returns Promise object
+- Async function is producer's code
+### 2.1 Producer's code
+```javascript
+httpResponseCode = 200
+async function promGenerator() {
+    if (httpResponseCode > 400) {
+        return Promise.reject("Error")
+    } else {
+        return Promise.resolve("OK")
+    }
 }
+```
+### 2.2 Consumer's code
+```javascript
+promGenerator()
+    .then(function (data) { console.log(data) })
+    .catch(function (err) { console.log(err) })
+```
 
-function promiseReturnFunction2(parameter1) {
-
+## 3. Await
+- We should always use 'await' in front of **function** call **that returns Promise**, **except for Promise constructor**
+```javascript
+async function usingString(){
+    let result = await promGenerator() // String is generated
+    console.log(result)
 }
-
-async function promiseFactory() {
-    let x = await someFunction()
-    let y = await anotherFunction(x)
-    let z = await otherFunction(y)
-    await lastFunction()
-    return 
+```
+- However, **if we use default Promise object constructor inside function**, we don't need 'await' keyword
+```javascript
+function usingPromise() {
+    let result = new Promise(function (f1, f2) { f1("Successfully processed") }) // Promise<String> is generated
+    result.then(function (data) { console.log(data) })
 }
-````
+```
+## 4. Using Await instead of Promise
+- await makes the code to wait until **Promise generating function** returns Promise object
+```javascript
+async function inUBC() {
+    let inCanada = await Canada() // Passing "in Canada" to inCanada variabble
+    let claimInCanadaAndInVancouver = await Vancouver(inCanada) // Passing "    in Vancouver" to claimInCanadaAndInVancouver variable
+    let claimInVancouverAndInUBC = await UBC(claimInCanadaAndInVancouver) //Passing "       in UBC" to claimInVancouverAndInUBC variable
+    console.log(claimInVancouverAndInUBC)
+}
+inUBC()
+```
+- In function that use 'await', there is no catch function, so we need to use try/catch block for handling the case that **Promise generating function"" returns **reject Promise object**
+```javascript
+async function inUBC() {
+    try {
+        let inCanada = await Canada()
+        let claimInCanadaAndInVancouver = await Vancouver(inCanada)
+        let claimInVancouverAndInUBC = await UBC(claimInCanadaAndInVancouver)
+        console.log(claimInVancouverAndInUBC)
+    } catch (e) {
+        console.log(e)
+    }
+}
+inUBC()
+```
 ---
