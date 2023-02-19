@@ -35,15 +35,6 @@
 - Slow when compiling code
 - Overall, development process is very slow
 ---
-## Go
-### Advantage
-- Can compute heavy algorithm
-- Good at multithreading in CPU
-- Faster than Java at compilation
-### Disadvantage
-- Has small community, so it is hard to get help
-- Does not have many modules
----
 # Other programming languages
 ## C++
 ### Advantage
@@ -55,11 +46,3 @@
 - Need to manage main memory manually
 - Takes long to develop application
 ---
-## Rust
-### Advantage
-- Can make backend application and operating system like C++
-- Good for making database or operating system or network application
-- Safer than C++
-- Faster than other programming languages
-### Disadvantage
-- Slower than C++
